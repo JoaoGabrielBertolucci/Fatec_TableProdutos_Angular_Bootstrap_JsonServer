@@ -1,0 +1,17 @@
+{
+  
+    
+    "produtos": [
+        {
+        "id": 1,
+        "nome": "cheetos",
+        "marca": " Frito-Lay",
+        "fabricante": "ElmaChips",
+        "quantidade": 10,
+        "Price": 16
+        }
+
+    ]
+
+  
+}
