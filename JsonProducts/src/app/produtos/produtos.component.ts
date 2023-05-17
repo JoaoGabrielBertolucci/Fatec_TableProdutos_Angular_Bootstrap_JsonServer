@@ -28,10 +28,10 @@ export class ProdutosComponent {
   }
 
   ngOnInit(): void {
-    this.loadClients();
+    this.loadProd();
   }
 
-  loadClients(){
+  loadProd(){
     this.ProdutossServicee.getProducts().subscribe(
       {
         next : data => this.Produts = data,
@@ -39,6 +39,39 @@ export class ProdutosComponent {
       }
     );
   }
+
+  loadClients(){
+    this.ProdutossServicee.loadProd().subscribe(
+      {
+        next : (data: Produt[]) => this.Produts = data,
+        error : () => console.log("Erro ao chamar o endpoint")
+      }
+    );
+  }
+
+  saveClients(){
+    this.ProdutossServicee.save(this.formGroupProduto.value).subscribe(
+      {
+        next : data => {
+          this.Produts.push(data);
+          this.formGroupProduto.reset();
+        }
+      }
+    );
+
+  
+  }
+
+  editing(Produttt: Produt): void {
+    this.formGroupProduto.setValue(Produttt);
+    this.isEditing = true;
+  }
+
+  remove(Produttt: Produt): void {
+    this.ProdutossServicee.remove(Produttt).subscribe({
+       next: () => this.loadClients()
+    });
+ }
 
 
 }

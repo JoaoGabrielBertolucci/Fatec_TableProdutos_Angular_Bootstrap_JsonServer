@@ -7,6 +7,9 @@ import { Produt } from 'src/produtoss';
   providedIn: 'root'
 })
 export class ProdutossService {
+  loadProd() {
+    throw new Error('Method not implemented.');
+  }
   url = "http://localhost:3000/produtos";
 
   constructor(private http : HttpClient) { }
